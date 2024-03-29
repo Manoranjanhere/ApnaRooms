@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnyRooms</title>
+</head>
+<body>
+    <h1>All Listings</h1>
+    <form method="GET" action="/listings/new">
+        <button>New Room</button>
+    </form>
+    <ul>
+        <%for(listing of listings){%>
+            <a href="/listings/<%= listing._id %>"><li><%= listing.title %></li></a>
+        <%}%>
+    </ul>
+</body>
+</html>
