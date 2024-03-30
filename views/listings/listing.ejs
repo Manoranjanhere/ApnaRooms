@@ -1,17 +1,50 @@
 <% layout("/layouts/boilerplate.ejs") -%>
-<body>
-    <h1>Here are Your Details</h1>
-    <h2><%= listing.title %></h2>
-    <ul>
-        <li><%= listing.description %></li>
-        <li>&#8377 <%= listing.price.toLocaleString("en-IN") %></li>
-        <li><%= listing.location %></li>
-        <li><%= listing.country %></li>
-    </ul>
-    <form action="/listings/<%= listing.id %>/edit">
-        <button>Edit</button>
-    </form>
-    <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
-        <button>Delete</button>
-    </form>
-</body>
+
+    <body>
+        <div class="row" style="margin-top: 5rem;">
+            <div class="col-sm-10 col-md-4 offset-1">
+                <div class="row">
+                    <div class="col-12 listing-image">
+                        <img src="<%= listing.image %>" alt="">
+                    </div>
+                    <div class="col-5 offset-1">
+                        <button type="button" class="btn btn-outline-primary" style="width: 80%;">Book Now</button>
+                    </div>
+                    <div class="col-6" style="padding-top: 0.5rem;">
+                        <h6>Price :  <i><span>  &#8377</span><%= listing.price.toLocaleString("en-IN") %> /night</i></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-10 col-md-5 offset-1">
+                <div class="row ">
+                    <div class="col-12" style="margin-top: 3.5rem">
+                        <h2>
+                            <%= listing.title %>
+                        </h2>
+                    </div>
+                    <div class="col-12" style="margin-top: 0.5rem">
+                        <h6>
+                            <i><%= listing.location %>,<%= listing.country %></i>
+                        </h6>
+                    </div>
+                    <div class="col-12" style="margin-top: 2rem">
+                        <p>
+                            <%= listing.description %>
+                        </p>
+                    </div>
+                    <div class="row" style="margin-top: 2rem;">
+                        <div class="col-5 offset-1">
+                            <form action="/listings/<%= listing.id %>/edit">
+                                <button type="submit" class="btn btn-outline-warning" style="width: 80%;">Edit</button>
+                            </form>
+                        </div>
+                        <div class="col-5 offset-1">
+                            <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
+                                <button type="submit" class="btn btn-outline-danger" style="width: 80%;">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
