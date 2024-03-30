@@ -1,13 +1,17 @@
 <% layout("/layouts/boilerplate.ejs") -%>
 <body>
-    <div class="row rows-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+    <div class="listings row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-xs-1" >
     <%for(listing of listings){%>
-    <div class="card listing-card  m-3 col" style="width: 20rem;">
-        <img src="<%= listing.image %>" class="card-img-top" alt="listing_image">
-        <div class="card-body">
-          <p class="card-text"> <%= listing.title %> <br> <br>  Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="/listings/<%= listing._id %>">
+        <div class="card listing col" style="width: 20rem;">
+            <img src="<%= listing.image %>" class="card-img-top" alt="listing_image">
+            <div class="card-body">
+            <p class="card-text"> <b><%= listing.title %></b><br> <br>  
+                <i>&#8377 <%= listing.price.toLocaleString("en-IN") %>/night</i>
+            </p>
+            </div>
         </div>
-    </div>
+        </a>
     <%}%>
     </div>
 </body>

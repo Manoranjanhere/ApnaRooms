@@ -1,6 +1,8 @@
-.container{
-    margin: 0;
+html,body{
+    margin:0;
+    padding: 0;
 }
+
 
 /* navbar */
 
@@ -12,6 +14,10 @@
 .navbar{
     height: 5rem;
     font-size: 1.3rem;
+}
+
+.navbar-nav li{
+    margin: 2rem;
 }
 
 /* footer */
@@ -32,3 +38,32 @@
 }
 
 /* index */
+
+.listings{
+    padding: 1rem;
+    width: 100%;
+    height: 20rem;
+}
+
+.listings a{
+    text-decoration: none;
+}
+
+.listings img{
+    margin: 1rem 1rem  1rem;
+    height: 10rem;
+    width: 18rem;
+    border-radius: 1rem;
+    
+}
+
+.listing{
+    margin: 1rem;
+    border-radius: 1rem;
+    border: none;
+}
+
+.listing:hover{
+    background-color: rgb(251, 251, 251);
+    transform: scale(1.03);
+}
