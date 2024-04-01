@@ -29,7 +29,7 @@ async function main(){
 
 //Root Node
 app.get("/",async(req,res)=>{
-    res.send('root node');
+    res.redirect('/listings')
 })
 
 //Index Route
