@@ -1,6 +1,6 @@
 const { required } = require('joi');
 const mongoose=require('mongoose');
-
+const { Schema } = mongoose;
 const reviewSchema=new mongoose.Schema({
     rating:{
         type:Number,
@@ -17,6 +17,11 @@ const reviewSchema=new mongoose.Schema({
         default:Date.now(),
         required:true,
     },
+    author:{
+        type:Schema.Types.ObjectId,
+        ref:"User",
+        required:true,
+    }
 })
 
 const Review=mongoose.model("Review",reviewSchema);
