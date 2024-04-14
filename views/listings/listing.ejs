@@ -17,7 +17,19 @@
                     <h4>Enter Your Review</h4>
                     <form method="post" action="/listings/<%= listing.id %>/review" novalidate class="needs-validation">
                         <label for="Rating" class="form-label">Rating</label>
-                        <input type="range" name="review[rating]" id="Rating" min="1" max="5" class="form-range">
+                        <fieldset class="starability-grow">
+                            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+                            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                            <label for="first-rate1" title="Terrible">1 star</label>
+                            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                            <label for="first-rate2" title="Not good">2 stars</label>
+                            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                            <label for="first-rate3" title="Average">3 stars</label>
+                            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                            <label for="first-rate4" title="Very good">4 stars</label>
+                            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                            <label for="first-rate5" title="Amazing">5 stars</label>
+                        </fieldset>
                         <label for="Content" class="form-label mt-2">Comments</label>
                         <textarea name="review[content]" id="Content" cols="30" rows="5" required class="form-control"></textarea>
                         <button class="btn btn-outline-primary mt-2" type="submit">Add</button>
@@ -71,7 +83,8 @@
                             </div>
                             <div class="card-body">
                               <h5 class="card-title"><%=review.content%></h5>
-                              <p class="card-text"><%=review.rating%> Stars</p>
+                              <p class="starability-result card-text" data-rating="<%= review.rating %>">
+                              </p>
                             </div>
                             <%if(currUser && currUser._id.equals(review.author._id)){%>
                             <div class="offset-1">
