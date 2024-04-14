@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV != "production") {
+    require('dotenv').config();
+}
+
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -5,7 +9,7 @@ const methodOverride = require('method-override');
 const path = require('path');
 const engine = require('ejs-mate');
 const ExpressError = require('./utils/ExpressError.js');
-const {wrapAsync} = require('./utils/middlewares.js');
+const { wrapAsync } = require('./utils/middlewares.js');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require("passport");
@@ -13,7 +17,7 @@ const LocalStratergy = require('passport-local');
 const User = require("./models/user.js");
 const listingRouter = require('./routes/listing.js');
 const reviewRouter = require("./routes/review.js");
-const userRouter=require("./routes/user.js");
+const userRouter = require("./routes/user.js");
 
 app.engine('ejs', engine);
 app.set("views", path.join(__dirname, "views"));
@@ -46,15 +50,15 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
-    res.locals.error=req.flash("error");
-    res.locals.currUser=req.user;
+    res.locals.error = req.flash("error");
+    res.locals.currUser = req.user;
     next();
 });
 
 //routes
 app.use("/listings", listingRouter);
 app.use("/listings/:id/review", reviewRouter);
-app.use("/",userRouter);
+app.use("/", userRouter);
 //Mongoose initialisation
 const Mongo_URL = 'mongodb://127.0.0.1:27017/AnyRoom';
 
