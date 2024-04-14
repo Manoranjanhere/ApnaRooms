@@ -1,0 +1,29 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="mt-4">
+                <h2>Login Into AnyRooms</h2>
+            </div>
+            <form action="/login" method="POST" class="needs-validation" novalidate>
+                <div class="mb-3 mt-4">
+                    <label for="Username" class="form-label">UserName </label>
+                    <input type="text" id="Username" name="username" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Enter a Valid Username
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="Password" class="form-label">Enter a Password </label>
+                    <input type="password" name="password" id="Password" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Enter a Valid Password
+                    </div>
+                    <div class="valid-feedback">
+                        Looks Good
+                    </div>
+                </div>
+                <button class="btn btn-outline-success">Login</button>
+            </form>
+        </div>
+    </div>
