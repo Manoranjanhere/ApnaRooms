@@ -90,7 +90,6 @@ app.get("/testing", wrapAsync(async (req, res) => {
 
 
 //All GET
-
 app.get("*", (req, res, next) => {
     throw next(new ExpressError(404, "Page Not Found"));
 })

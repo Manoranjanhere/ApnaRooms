@@ -24,21 +24,21 @@ body {
     font-weight: 500;
     font-style: normal;
 }
-/* .container-fluid{
-    display: flex;
-    justify-content: space-evenly;
-}
 
 
 .navbar-nav li {
     margin: 2rem;
-    margin-left: 5rem;
-    font-weight: 500;
+    margin-left: 2rem;
+    font-weight: 500; 
+}
+
+.nav-link{
+    color: rgb(19, 13, 13) !important;
 }
 
 li:hover{
-    font-weight: 600;
-    transform: scale(1.01);
+    font-weight: 500;
+    transform: scale(1.02);
 } */
 
 /* footer */
