@@ -23,6 +23,7 @@ body {
     font-family: "Lato", sans-serif;
     font-weight: 500;
     font-style: normal;
+    border-bottom: 1px solid rgb(216, 211, 211);
 }
 
 
@@ -101,4 +102,50 @@ li:hover{
 
 .listing-image {
     margin-bottom: 5rem;
+}
+
+/* icons */
+
+.icons{
+    margin: 2rem 1rem 0 2rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.icon{
+    font-size: 0.95rem;
+    margin-right: 3rem;
+    margin-left: 1.5rem;
+    opacity: 0.7;
+}
+
+.cam{
+    display: flex;
+    align-items:flex-end;
+    justify-content: space-around;
+}
+
+.fa-arrow-right{
+    font-size: 1.4rem;
+    opacity: 0.7;
+    padding-bottom: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.fa-arrow-left{
+    font-size: 1.4rem;
+    opacity: 0.7;
+    padding-bottom: 0.5rem;
+    padding-right: 0.7rem;
+}
+
+.icon:hover, .fa-arrow-left:hover,.fa-arrow-right:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.search{
+    border-radius: 18px;
+    padding: 4px 8px 4px 8px;
 }

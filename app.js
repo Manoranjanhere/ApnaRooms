@@ -11,6 +11,7 @@ const engine = require('ejs-mate');
 const ExpressError = require('./utils/ExpressError.js');
 const { wrapAsync } = require('./utils/middlewares.js');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const passport = require("passport");
 const LocalStratergy = require('passport-local');
@@ -26,8 +27,31 @@ app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "./public")));
 
+
+//Mongoose initialisation
+const Mongo_URL = process.env.MONGO_URL;
+
+main().then(() => {
+    console.log("Database connected");
+}).catch((err) => {
+    console.log
+});
+
+async function main() {
+    await mongoose.connect(Mongo_URL);
+}
+
+const store=MongoStore.create({
+    mongoUrl:Mongo_URL,
+    crypto:{
+        secret: process.env.SECRET,
+    },
+    touchAfter:24*3600,
+});
+
 const sessionOptions = {
-    secret: 'secretcode',
+    store,
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -59,18 +83,7 @@ app.use((req, res, next) => {
 app.use("/listings", listingRouter);
 app.use("/listings/:id/review", reviewRouter);
 app.use("/", userRouter);
-//Mongoose initialisation
-const Mongo_URL = 'mongodb://127.0.0.1:27017/AnyRoom';
 
-main().then(() => {
-    console.log("Database connected");
-}).catch((err) => {
-    console.log
-});
-
-async function main() {
-    await mongoose.connect(Mongo_URL);
-}
 
 
 

@@ -1,15 +1,68 @@
 <% layout("/layouts/boilerplate.ejs") -%>
-    <div class="listings row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-xs-1" >
-    <%for(listing of listings){%>
-        <a href="/listings/<%= listing._id %>">
-        <div class="card listing col" style="width: 20rem;">
-            <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image">
-            <div class="card-body">
-            <p class="card-text"> <b><%= listing.title %></b><br> <br>  
-                <i>&#8377 <%= listing.price.toLocaleString("en-IN") %>/night</i>
-            </p>
+    <div class="row cam">
+        <div class="icons col-6">
+            <div class="arrow">
+                <i class="fa-solid fa-arrow-left"></i>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-fire"></i><br>
+                Trending
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-person-swimming"></i><br>
+                Pools
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-chess-rook"></i><br>
+                Castles
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-tents"></i><br>
+                Camping
+            </div>
+
+            <div class="icon">
+                <i class="fa-solid fa-gopuram"></i><br>
+                Temples
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-umbrella-beach"></i><br>
+                Beach
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-ship"></i>
+                Boat
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-landmark-dome"></i><br>
+                Dome
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-landmark-dome"></i><br>
+                Dome
+            </div>
+            <div class="arrow">
+                <i class="fa-solid fa-arrow-right"></i>
             </div>
         </div>
-        </a>
-    <%}%>
+        <div class="form-check-reverse form-switch col-3 mb-3 tax">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Price After Taxes</label>
+        </div>    
+    </div>
+    <div class="listings row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-xs-1">
+        <%for(listing of listings){%>
+            <a href="/listings/<%= listing._id %>">
+                <div class="card listing col" style="width: 20rem;">
+                    <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image">
+                    <div class="card-body">
+                        <p class="card-text"> <b>
+                                <%= listing.title %>
+                            </b><br> <br>
+                            <i>&#8377 <%= listing.price.toLocaleString("en-IN") %>/night</i>
+                        </p>
+                    </div>
+                </div>
+            </a>
+            <%}%>
     </div>

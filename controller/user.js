@@ -1,4 +1,6 @@
 
+const User=require("../models/user.js");
+
 module.exports.getSignup=(req, res) => {
     res.render("./user/signup.ejs");
 };
@@ -20,6 +22,7 @@ module.exports.signup=async (req, res) => {
         })
     }
     catch (e) {
+        console.log(e);
         req.flash("error", e.message);
         res.redirect("/signup");
     }
