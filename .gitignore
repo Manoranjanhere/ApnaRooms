@@ -1,3 +1,3 @@
 .env
-node_modules
-init
+node_modules/
+init/
