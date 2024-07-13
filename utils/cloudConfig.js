@@ -10,7 +10,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-        folder: "AnyRooms_DEV",
+        folder: "ApnaRooms_DEV",
         allowedFormats:["png","jpeg","jpg"],
     },
   });

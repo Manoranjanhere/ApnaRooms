@@ -1,4 +1,8 @@
 <% layout("/layouts/boilerplate.ejs") -%>
+<div class="d-flex justify-content-center mt-3">
+    <button id="sortButton" onclick="toggleSort()" type="submit" class="btn btn-outline-warning text-center" style="width: 20%;">Sort by Price</button>
+</div>
+
     <div class="listings row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-xs-1">
         <%for(listing of listings){%>
             <a href="/listings/<%= listing._id %>">
@@ -15,3 +19,76 @@
             </a>
             <%}%>
     </div>
+    <script>
+        let isSorted = false; // Track sorting state
+        let originalListings = []; // To store the original order
+    
+        window.onload = function() {
+            // Capture the original order of listings
+            const listingsContainer = document.querySelector('.listings');
+            for (let listing of listingsContainer.children) {
+                originalListings.push(listing.cloneNode(true));
+            }
+        };
+    
+        function mergeSort(arr, comparator) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+
+    const middle = Math.floor(arr.length / 2);
+    const left = arr.slice(0, middle);
+    const right = arr.slice(middle);
+
+    return merge(
+        mergeSort(left, comparator),
+        mergeSort(right, comparator),
+        comparator
+    );
+}
+
+function merge(left, right, comparator) {
+    let resultArray = [], leftIndex = 0, rightIndex = 0;
+
+    while (leftIndex < left.length && rightIndex < right.length) {
+        if (comparator(left[leftIndex], right[rightIndex]) <= 0) {
+            resultArray.push(left[leftIndex]);
+            leftIndex++;
+        } else {
+            resultArray.push(right[rightIndex]);
+            rightIndex++;
+        }
+    }
+
+    return resultArray
+        .concat(left.slice(leftIndex))
+        .concat(right.slice(rightIndex));
+}
+
+function toggleSort() {
+    const listingsContainer = document.querySelector('.listings');
+    let listings = Array.from(listingsContainer.children);
+
+    if (!isSorted) {
+        // Sort listings by price using merge sort
+        const sortedListings = mergeSort(listings, (a, b) => {
+            let priceA = parseInt(a.querySelector('.card-text i').textContent.replace(/[^0-9]/g, ''), 10);
+            let priceB = parseInt(b.querySelector('.card-text i').textContent.replace(/[^0-9]/g, ''), 10);
+            return priceA - priceB;
+        });
+
+        // Clear the container and append sorted listings
+        listingsContainer.innerHTML = '';
+        sortedListings.forEach(listing => listingsContainer.appendChild(listing));
+
+        isSorted = true;
+        document.getElementById('sortButton').textContent = 'Revert Sorting';
+    } else {
+        // Revert to original order
+        listingsContainer.innerHTML = '';
+        originalListings.forEach(listing => listingsContainer.appendChild(listing));
+        isSorted = false;
+        document.getElementById('sortButton').textContent = 'Sort by Price';
+    }
+}  
+    </script>
