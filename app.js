@@ -85,8 +85,6 @@ app.use("/listings/:id/review", reviewRouter);
 app.use("/", userRouter);
 
 
-
-
 //Root Node
 app.get("/", async (req, res) => {
     res.redirect('/listings')

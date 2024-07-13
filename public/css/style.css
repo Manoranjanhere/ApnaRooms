@@ -6,7 +6,7 @@ body {
 
 /* navbar */
 
-.fa-compass {
+.fa-house {
     color: red;
     font-size: 1.7rem;
 }
@@ -28,7 +28,6 @@ body {
 
 
 .navbar-nav li {
-    margin: 2rem;
     margin-left: 2rem;
     font-weight: 500; 
 }
@@ -149,3 +148,19 @@ li:hover{
     border-radius: 18px;
     padding: 4px 8px 4px 8px;
 }
+@media (max-width: 990px) {
+    .navbar {
+      height: 150px; /* Increased height for mobile */
+      flex-direction: column; /* Stack items vertically */
+      align-items: flex-start; /* Align items to the start */
+    }
+  
+    .navbar-menu {
+      flex-direction: column; /* Stack menu items vertically */
+      width: 100%;
+    }
+  
+    .navbar-item {
+      margin: 0.5rem 0;
+    }
+  }

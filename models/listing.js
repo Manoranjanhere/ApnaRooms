@@ -37,8 +37,16 @@ const listingSchema = new mongoose.Schema({
         coordinates: {
           type: [Number],
           required: true
-        }
-      }
+        },
+      },
+      map:
+        {
+            type:String,
+        },
+        contact:{
+            type:Number,
+            required:true
+        },
 });
 
 listingSchema.post("findOneAndDelete",async(listing)=>{

@@ -4,7 +4,6 @@ const User=require("../models/user.js");
 module.exports.getSignup=(req, res) => {
     res.render("./user/signup.ejs");
 };
-
 module.exports.signup=async (req, res) => {
     try {
         let { username, email, password } = req.body;

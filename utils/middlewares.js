@@ -56,7 +56,7 @@ module.exports.saveRedirectUrl=(req,res,next)=>{
 module.exports.isOwner=async (req,res,next)=>{
     let{id}=req.params;
     let listing=await Listing.findById(id);
-    if(!(res.locals.currUser && res.locals.currUser._id.equals(listing.owner._id))){
+    if(!(res.locals.currUser && res.locals.currUser._id.equals(listing.owner._id))&&res.locals.currUser.role!==2){
         req.flash("error","You dont have access to this");
         return res.redirect(`/listings/${id}`);
     }
@@ -66,7 +66,7 @@ module.exports.isOwner=async (req,res,next)=>{
 module.exports.isAuthor=async (req,res,next)=>{
     let{id,reviewId}=req.params;
     let review =await Review.findById(reviewId);
-    if(!(res.locals.currUser && res.locals.currUser._id.equals(review.author._id))){
+    if(!(res.locals.currUser && res.locals.currUser._id.equals(review.author._id))&&res.locals.currUser.role!==2){
         req.flash("error","You dont have access to this");
         return res.redirect(`/listings/${id}`);
     }

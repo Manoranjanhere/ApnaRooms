@@ -6,48 +6,55 @@
     <div class="row" style="margin-top: 5rem;">
         <div class="col-sm-10 col-md-4 offset-1">
             <div class="row">
-                <div class="col-12 listing-image">
+                <div class="col-10 listing-image">
                     <img src="<%= listing.image.url %>" alt="">
                 </div>
                 <div class="col-5 offset-1">
-                    <button type="button" class="btn btn-outline-primary" style="width: 80%;">Book Now</button>
+                    <h6 >PG Owner Contact: +91 <%= listing.contact%></h6>
                 </div>
                 <div class="col-6" style="padding-top: 0.5rem;">
                     <h6>Price : <i><span> &#8377</span>
-                            <%= listing.price.toLocaleString("en-IN") %> /night
+                            <%= listing.price.toLocaleString("en-IN") %> /Month
                         </i></h6>
                 </div>
             </div>
             <div class="mt-5">
                 <h4>Where You'll Be</h4>
-                <div id='map' style='width: 100%; height: 300px; margin-top: 1rem;'></div>
+                <div id='map' style='width: 80%; height: 300px; margin-top: 1rem;'></div>
             </div>
+            <h3 class="mt-5">Your exact location: <br>
+                view in google map!👇
+            </h3 class="mt-5">
+            <p><%-listing.map%><p>
+
         </div>
         <div class="col-sm-10 col-md-5 offset-1">
             <div class="row ">
-                <div class="col-12" style="margin-top: 3.5rem">
+                <div class="col-10" style="margin-top: 3.5rem">
                     <h2>
                         <%= listing.title %>
                     </h2>
                 </div>
-                <div class="col-12" style="margin-top: 0.5rem">
+                <div class="col-10" style="margin-top: 0.5rem">
                     <h6>
                         <i>
                             <%= listing.location %>,<%= listing.country %>
                         </i>
                     </h6>
                 </div>
-                <div class="col-12" style="margin-top: 0.5rem">
+                <%if(listing.owner){%>
+                <div class="col-10" style="margin-top: 0.5rem">
                     <h6>
                         <i>Owned By <%= listing.owner.username %></i>
                     </h6>
                 </div>
-                <div class="col-12" style="margin-top: 2rem">
+                    <%}%>
+                <div class="col-10" style="margin-top: 2rem">
                     <p>
                         <%= listing.description %>
                     </p>
                 </div>
-                <%if(currUser && currUser._id.equals(listing.owner._id)){%>
+                <%if((!listing.owner&&currUser.role===2)||(listing.owner&&currUser && (currUser._id.equals(listing.owner._id)||currUser.role===2))){%>
                     <div class="row" style="margin-top: 2rem;">
                         <div class="col-5 offset-1">
                             <form action="/listings/<%= listing.id %>/edit">
@@ -82,7 +89,7 @@
                             <label for="first-rate5" title="Amazing">5 stars</label>
                         </fieldset>
                         <label for="Content" class="form-label mt-2">Comments</label>
-                        <textarea name="review[content]" id="Content" cols="30" rows="5" required
+                        <textarea name="review[content]" id="Content" cols="10" rows="5" required
                             class="form-control"></textarea>
                         <button class="btn btn-outline-primary mt-2" type="submit">Add</button>
                     </form>
@@ -103,7 +110,7 @@
                                         <p class="starability-result card-text" data-rating="<%= review.rating %>">
                                         </p>
                                     </div>
-                                    <%if(currUser && currUser._id.equals(review.author._id)){%>
+                                    <%if(currUser && (currUser._id.equals(review.author._id)||currUser.role===2)){%>
                                         <div class="offset-1">
                                             <form method="POST"
                                                 action="/listings/<%= listing.id %>/review/<%= review.id %>?_method=DELETE">

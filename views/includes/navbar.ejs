@@ -1,14 +1,9 @@
-<nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
+<link rel="stylesheet" href="/css/style.css">
+<nav class="navbar sticky-top navbar-expand-md bg-body-tertiary">
   <div class="container-fluid d-flex justify-content-between">
     <div>
-      <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass d-inline-block align-text-top"></i> &nbsp;
-        AnyRooms</a>
-    </div>
-    <div>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-danger search" type="submit">Search</button>
-      </form>
+      <a class="navbar-brand" href="/listings"><i class="fa-solid fa-house d-inline-block "></i></i> &nbsp;
+        ApnaRooms</a>
     </div>
     <div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -16,7 +11,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse"  id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <%if(!currUser ){%>
         <li class="nav-item">
@@ -27,9 +22,11 @@
         </li>
         <%}%>
         <%if(currUser){%>
+        <%if(currUser.role===1||currUser.role===2){%>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/listings/new">Create New Listing</a>
           </li>
+          <%}%>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
         </li>
