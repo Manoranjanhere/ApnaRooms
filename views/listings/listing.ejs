@@ -11,22 +11,25 @@
                 </div>
                 <div class="col-5 offset-1">
                     <button  type="button" class="btn btn-primary" onclick="toggleContact()">Show PG Owner Contact</button>
-                    <h5 id="contactInfo" style="display:none; margin-top: 10px;">+91 <%= listing.contact %></h5>
+                    <h6 id="contactInfo" style="display:none; margin-top: 10px;">+91<%= listing.contact %></h6>
                 </div>
                 <div class="col-6" style="padding-top: 0.5rem;">
-                    <h5>Price : <i><span> &#8377</span>
+                    <h6>Price : <i><span> &#8377</span>
                             <%= listing.price.toLocaleString("en-IN") %> /Month
-                        </i></h5>
+                        </i></h6>
                 </div>
             </div>
             <div class="mt-5">
                 <h4>Where You'll Be</h4>
                 <div id='map' style='width: 80%; height: 300px; margin-top: 1rem;'></div>
             </div>
-            <h3 class="mt-5">Your exact location: <br>
-                view in google map!👇
-            </h3 class="mt-5">
-            <p><%-listing.map%><p>
+            <div class="mt-5">
+                <h3 class="mt-5">Your exact location: <br>
+                    view in google map!👇
+                </h3 class="mt-5">
+                <p><%-listing.map%><p>
+            </div>
+            
 
         </div>
         <div class="col-sm-10 col-md-5 offset-1">
