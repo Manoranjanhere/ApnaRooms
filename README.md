@@ -1,14 +1,14 @@
-# PG Booking Website
+# Room Booking Website
 
-This repository contains the source code for a PG (Paying Guest) booking website. The website allows users to search for, view details, and book PG accommodations.
+This repository contains the source code for a room booking website. The website allows users to search for, view details, and book room for accommodations.
 
 ## Features
 
-- Search for PG accommodations by location
-- View detailed information about PGs
-- Book PG accommodations
+- Search for room accommodations by location
+- View detailed information about rooms
+- Book room accommodations
 - User authentication and authorization
-- Add new PG listings after signing up
+- Add new room listings after signing up
 
 ## Installation
 
