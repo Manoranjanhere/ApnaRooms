@@ -11,12 +11,12 @@
                 </div>
                 <div class="col-5 offset-1">
                     <button  type="button" class="btn btn-primary" onclick="toggleContact()">Show PG Owner Contact</button>
-                    <h6 id="contactInfo" style="display:none; margin-top: 10px;">+91<%= listing.contact %></h6>
+                    <h6 id="contactInfo" style="display:none; margin-top: 10px;">+91 <%= listing.contact %></h6>
                 </div>
                 <div class="col-6" style="padding-top: 0.5rem;">
-                    <h6>Price : <i><span> &#8377</span>
+                    <h5>Price : <i><span> &#8377</span>
                             <%= listing.price.toLocaleString("en-IN") %> /Month
-                        </i></h6>
+                        </i></h5>
                 </div>
             </div>
             <div class="mt-5">
