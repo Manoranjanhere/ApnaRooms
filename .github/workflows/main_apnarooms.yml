@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
@@ -53,10 +54,68 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
+=======
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy Node.js app to Azure Web App - apnarooms
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+
+      - name: npm install, build, and test
+        run: |
+          npm install
+          npm run build --if-present
+          npm run test --if-present
+
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* -r
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v3
+        with:
+          name: node-app
+          path: release.zip
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write #This is required for requesting the JWT
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: node-app
+
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
+>>>>>>> 9396355e0060adab9a3f21327f61bf7b4a45bf83
       
       - name: Login to Azure
         uses: azure/login@v1
         with:
+<<<<<<< HEAD
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_664A02758A01424AA2E611636B0B928E }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_2315DCAB1EEB46CCA4A60FBF13BBD765 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_FE0D842D42B345A3A7AEDA6F0197AEED }}
@@ -68,4 +127,17 @@ jobs:
           app-name: 'apnarooms'
           slot-name: 'Production'
           package: .
+=======
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AC4DF4DF482048EDA5C0062A1CA41699 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1155DF83FD2449F5A9064BF18626E5A9 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6BF93188214840EB8CC947FC110004FD }}
+
+      - name: 'Deploy to Azure Web App'
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'apnarooms'
+          slot-name: 'Production'
+          package: .
+>>>>>>> 9396355e0060adab9a3f21327f61bf7b4a45bf83
           
