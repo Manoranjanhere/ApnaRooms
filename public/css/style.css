@@ -155,10 +155,16 @@ li:hover{
     opacity: 1;
     cursor: pointer;
 }
-
-.search{
-    border-radius: 18px;
-    padding: 4px 8px 4px 8px;
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #000; /* Change the color as needed */
+    border-radius: 50%;
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+}
+/* Optional: Add more custom styles for better visibility */
+.carousel-control-prev, .carousel-control-next {
+    filter: drop-shadow(0 0 5px #fff); /* Add shadow to make arrows stand out */
 }
 @media (max-width: 576px) {
     .navbar {
