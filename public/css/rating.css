@@ -253,3 +253,15 @@
     -webkit-animation-fill-mode: forwards;
             animation-fill-mode: forwards;
   }
+  @media (max-width: 576px) { /* Adjusts styles for screens smaller than 576px */
+    .starability-grow > input + label {
+      /* Reduce the size of the stars */
+      transform: scale(0.8);
+      transform-origin: center;
+    }
+  
+    .starability-grow {
+      /* Adjust padding or margin if necessary */
+      padding: 5px;
+    }
+  }
