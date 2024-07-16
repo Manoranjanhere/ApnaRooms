@@ -43,12 +43,14 @@
         />
       </div>
       <div class="mb-3">
-        <label for="title" class="form-label">Upload Image</label>
+        <label for="title" class="form-label"
+          >*Upload Image (up to 5, less than 2MB)</label
+        >
         <div id="image-upload-container">
-          <input type="file" name="uploadedImages" required />
+          <input type="file" accept="image/*" name="uploadedImages" required />
           <button type="button" id="add-image-field">+</button>
         </div>
-        <div class="invalid-feedback">Upload an Image</div>
+        <div class="invalid-feedback">*Upload an Image</div>
       </div>
       <div class="row">
         <div class="mb-3 col-6">
@@ -111,24 +113,54 @@
   </div>
 </div>
 <script>
-  // JavaScript
-  document
-    .getElementById("add-image-field")
-    .addEventListener("click", function () {
+  document.addEventListener("DOMContentLoaded", function () {
+    const addButton = document.getElementById("add-image-field");
+    addButton.addEventListener("click", function () {
       const container = document.getElementById("image-upload-container");
-      const newInput = document.createElement("input");
-      newInput.setAttribute("type", "file");
-      newInput.setAttribute("name", "uploadedImages");
+      const currentInputs = container.querySelectorAll(
+        ".image-upload-wrapper"
+      ).length;
 
-      const removeButton = document.createElement("button");
-      removeButton.textContent = "-";
-      removeButton.type = "button";
-      removeButton.onclick = function () {
-        newInput.remove();
-        removeButton.remove();
-      };
+      if (currentInputs < 4) {
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("image-upload-wrapper");
+        wrapper.style.marginTop = "10px"; // Add margin-top
 
-      container.appendChild(newInput);
-      container.appendChild(removeButton);
+        const newInput = document.createElement("input");
+        newInput.type = "file";
+        newInput.accept = "image/*";
+        newInput.name = "uploadedImages";
+
+        // Check file size before adding
+        newInput.addEventListener("change", function (event) {
+          if (event.target.files[0].size > 2097152) {
+            // 2MB in bytes
+            alert("File size should not exceed 2MB.");
+            event.target.value = ""; // Clear the file input
+          }
+        });
+
+        const removeButton = document.createElement("button");
+        removeButton.type = "button";
+        removeButton.textContent = "-";
+        removeButton.addEventListener("click", function () {
+          wrapper.remove();
+        });
+
+        wrapper.appendChild(newInput);
+        wrapper.appendChild(removeButton);
+        container.appendChild(wrapper);
+      }
     });
+  });      
+      // Add this check before the existing addButton event listener
+      document.querySelector('form').addEventListener('submit', function(e) {
+        const firstImageInput = document.querySelector('input[type="file"]:first-of-type');
+        if (!firstImageInput.value) {
+          e.preventDefault(); // Prevent form submission
+          alert('Please upload atleast one photo.');
+        }
+      });
+      
+      // Existing addButton event listener code continues here...
 </script>
