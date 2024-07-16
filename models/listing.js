@@ -42,6 +42,7 @@ const listingSchema = new mongoose.Schema({
       map:
         {
             type:String,
+            required: true
         },
         contact:{
             type:Number,
