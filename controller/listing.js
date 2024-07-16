@@ -59,12 +59,14 @@ module.exports.updateListingForm=async (req, res) => {
 
 module.exports.updateListing=async (req, res) => {
     let { id } = req.params;
+   
     let listing= await Listing.findByIdAndUpdate(id, { ...req.body.listing });
 
-    if(typeof req.file!="undefined"){
-        let url=req.file.path;
-        let filename=req.file.filename;
-        listing.image={url,filename};
+    if(req.files){
+        listing.image=[];
+        req.files.forEach((files)=>{
+            listing.image.push({url:files.path,filename:files.filename});
+        })
         await listing.save();
     }
     
