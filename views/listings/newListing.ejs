@@ -33,15 +33,20 @@
           ></textarea>
           <div class="invalid-feedback">Enter a Valid Description</div>
         </div>
+        <!-- HTML -->
         <div class="mb-3">
           <label for="title" class="form-label">Upload Image</label>
-          <input
-            type="file"
-            name="listing[image]"
-            class="form-control"
-            required
-          />
-          <div class="invalid-feedback">Upload a Image</div>
+          <div id="image-upload-container">
+            <input
+              type="file"
+              accept="image/*"
+              name="uploadedImages"
+              required
+              multiple
+            />
+            <button type="button" id="add-image-field">+</button>
+          </div>
+          <div class="invalid-feedback">Upload an Image</div>
         </div>
         <div class="row">
           <div class="mb-3 col-6">
@@ -104,4 +109,28 @@
       </form>
     </div>
   </div>
+  <script>
+    // JavaScript
+    document
+      .getElementById("add-image-field")
+      .addEventListener("click", function () {
+        const container = document.getElementById("image-upload-container");
+        const newInput = document.createElement("input");
+        newInput.setAttribute("type", "file");
+        newInput.setAttribute("accept", "image/*");
+        newInput.setAttribute("name", "uploadedImages");
+        newInput.setAttribute("multiple", true);
+
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "-";
+        removeButton.type = "button";
+        removeButton.onclick = function () {
+          newInput.remove();
+          removeButton.remove();
+        };
+
+        container.appendChild(newInput);
+        container.appendChild(removeButton);
+      });
+  </script>
 </body>

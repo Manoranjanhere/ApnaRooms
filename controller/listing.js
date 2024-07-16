@@ -14,16 +14,19 @@ module.exports.createListingForm=(req, res) => {
 };
 
 module.exports.createListing=async (req, res) => {
+    console.log("entered");
     let response= await geocodingClient.forwardGeocode({
         query: req.body.listing.location,
         limit: 1
       }).send();
-    let url=req.file.path;
-    let filename=req.file.filename;
+      
     const newListing = new Listing(req.body.listing);
     newListing.owner = res.locals.currUser._id;
-    newListing.image={url,filename};
-    newListing.geometry=response.body.features[0].geometry
+    req.files.forEach((files)=>{
+        newListing.image.push({url:files.path,filename:files.filename});
+    })
+    newListing.geometry=response.body.features[0].geometry;
+    console.log(newListing);
     await newListing.save();
     req.flash("success", "New Listing Created");
     res.redirect("/listings");
