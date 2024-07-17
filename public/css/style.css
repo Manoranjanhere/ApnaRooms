@@ -104,7 +104,11 @@ li:hover{
 }
 
 /* listing */
-
+iframe
+{
+    width: 80%;
+    height:300px;
+}
 .listing-image img {
     width: 100%;
     height: 20rem;
