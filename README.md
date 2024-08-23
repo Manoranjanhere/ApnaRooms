@@ -1,6 +1,6 @@
 # Rooms Booking Website
 
-This repository contains the source code for a room booking website. The website allows users to search for, view details, and book room for accommodations.
+This repository contains the source code for a room booking website. The website allows users to search for, view details, and book room for accommodations
 
 ## Features
 
