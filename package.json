@@ -2,7 +2,7 @@
   "engines": {
     "node": "20.12.0"
   },
-  "name": "anyrooms",
+  "name": "apnarooms",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
