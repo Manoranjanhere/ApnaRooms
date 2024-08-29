@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Slideshow</title>
+    <style>
+        #slideshow-container {
+            max-width: 600px;
+            position: relative;
+            margin: auto;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="slideshow-container">
+    <div class="mySlides">
+        <img src="./Borneo-orangutans-Indonesia-deforestation-Photo-Ulet-IfansastiGetty-Images-.jpg" alt="Image 1">
+    </div>
+    <div class="mySlides">
+        <img src="./download.jpeg" alt="Image 2">
+    </div>
+    <div class="mySlides">
+        <img src="./wp4284471.webp" alt="Image 3">
+    </div>
+</div>
+
+<script>
+    let slideIndex = 0;
+
+    function showSlides() {
+        let i;
+        const slides = document.getElementsByClassName("mySlides");
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        slideIndex++;
+
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 2000); // Change slide every 2 seconds
+    }
+
+    showSlides(); // Initial call to start the slideshow
+</script>
+
+</body>
+</html>

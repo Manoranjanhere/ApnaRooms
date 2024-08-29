@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<link rel="stylesheet" href="style.css">
+<body>
+    <div class="container">
+        <div class="hero">
+            <div class="image"><img src="download.jpeg" alt="APJ SIR"></div>
+            <div class="name">NAME: APJ ABDUL KALAM
+                                 Born on 15th october 1931</div>
+                                 
+                                 <button id="but">full name</button>
+                                 <button id="pic">photo</button>
+                                </div>
+    </div>
+    <marquee id = "add" behavior="" direction=""></marquee>
+
+    <script>
+    $(document).ready(function(){
+        $(".name").css("background-color","");
+        $("#but").click(function(){
+            $(".name").html("NAME: Avul Pakir Jainulabdeen Abdul Kalam");
+        });
+        $("#pic").click(function(){
+            $("#add").html("<img src='download.jpeg' alt='APJ SIR'>");
+        });
+    });    
+    </script>             
+</body>
+</html>

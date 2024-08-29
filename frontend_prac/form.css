@@ -1,0 +1,73 @@
+body{
+    background-color: rgb(8, 248, 56);
+}
+body h1
+{
+    background-color: rgb(76, 152, 6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 34vw;
+    padding: 10px;
+    border-radius: 10px;
+    width: 30%;
+}
+form{
+    border-radius: 15px;
+    padding: 50px;
+    font-size: 1.5vw;
+    background-color: rgb(76, 152, 6);
+}
+button{
+    padding: 10px 15px;
+    border-radius: 50px;
+    background-color: green;
+
+}
+.form
+{
+    display: flex;
+    justify-content: space-between;
+}
+.middle
+{
+    width:30%
+}
+textarea{
+    background-color: rgb(150, 245, 141);
+}
+#n1
+{
+    color: red;
+    font-size: 2.5vh;
+}
+#n2
+{
+    color: red;
+    font-size: 2.5vh;
+}
+#n3
+{
+    color: red;
+    font-size: 2.5vh;
+}
+#n4
+{
+    color: red;
+    font-size: 2.5vh;
+}
+#n5
+{
+    color: red;
+    font-size: 2.5vh;
+}
+legend{
+   padding: 1vw;
+   
+}
+fieldset
+{
+    padding: 20px 20px;
+    border-radius: 20px;
+    border-color: aqua;
+}

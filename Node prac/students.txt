@@ -1,0 +1,3 @@
+Reg. No., Name, Grade
+1, John Doe, A
+2, Jane Doe, B

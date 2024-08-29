@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="" id="mainImage">
+    <br>
+    <button id="hide">Hide</button>
+    <button id="show">Show</button>
+    <button id="toggle">Toggle</button>
+    <button id="toggleto">Toggle To</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#hide").click(function(){
+                $("#mainImage").slideUp();
+            });
+            $("#show").click(function(){
+                $("#mainImage").slideDown();
+            });
+            $("#toggle").click(function(){
+                $("#mainImage").fadeToggle();
+            });
+            $("#toggleto").click(function(){
+                $("#mainImage").slideToggle(2000);
+            });
+        });
+    
+
+    </script>
+  
+  
+</body>
+</html>

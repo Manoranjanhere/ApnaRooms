@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes blinkGreen {
+            0%, 50%, 100% { background-color: green; }
+            25%, 75% { background-color: transparent; }
+        }
+
+        @keyframes blinkRed {
+            0%, 50%, 100% { background-color: red; }
+            25%, 75% { background-color: transparent; }
+        }
+
+        body.blinking-green {
+            animation: blinkGreen 2s infinite;
+        }
+
+        body.blinking-red {
+            animation: blinkRed 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1>Input your number</h1>
+    <input type="text" id="demo">
+    <button onclick="myFunction()">Submit</button>
+    <p id="p1"></p>
+
+    <script>
+        function myFunction() {
+            const message = document.getElementById("p1");
+            message.innerHTML = "";
+            let x = document.getElementById("demo").value;
+
+            try {
+                if (x === "") throw " input is empty";
+                if (x > 10) throw " input is high";
+                if (x < 5) throw " input is low";
+                if (isNaN(x)) throw "is not a number";
+                
+                if (x >= 5 && x <= 10) {
+                    message.innerHTML = "Correct input";
+                    document.body.className = "blinking-green";
+                }
+            } catch (err) {
+                message.innerHTML = err;
+                document.body.className = "blinking-red";
+            }
+        }
+    </script>
+</body>
+</html>
