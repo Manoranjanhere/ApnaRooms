@@ -34,7 +34,7 @@ const Mongo_URL = process.env.MONGO_URL;
 main().then(() => {
     console.log("Database connected");
 }).catch((err) => {
-    console.log
+    console.log("error in db")
 });
 
 async function main() {
