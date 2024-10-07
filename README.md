@@ -1,4 +1,5 @@
 # Rooms Booking Website
+![apna](https://github.com/user-attachments/assets/c9378ef4-5d65-479f-843a-e5d2d4326814)
 
 This repository contains the source code for a room booking website. The website allows users to search for, view details, and book room for accommodations
 
@@ -77,9 +78,6 @@ Copy code
 Make sure to replace placeholder values such as `your_cloud_name`, `your_map_token`, `your_mongodb_connection_url`, `your_secret_key`, and `yourprofile` with the actual values relevant to your project.
 
 
-
-
-![apna](https://github.com/user-attachments/assets/83411b20-4cef-40f7-98f6-50c7354ec30d)
 
 
 
