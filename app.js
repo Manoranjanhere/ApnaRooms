@@ -19,6 +19,7 @@ const User = require("./models/user.js");
 const listingRouter = require('./routes/listing.js');
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const https = require('https');
 
 app.engine('ejs', engine);
 app.set("views", path.join(__dirname, "views"));
@@ -90,6 +91,10 @@ app.get("/", async (req, res) => {
     res.redirect('/listings')
 })
 
+// Ping route for health check
+app.get("/ping", (req, res) => {
+    res.status(200).send("ApnaRooms service is up and running!");
+});
 
 //TESTING NODE
 
@@ -115,7 +120,21 @@ app.use((err, req, res, next) => {
 
 
 //Listen Node
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+});
 
-app.listen(8080, () => {
-    console.log("Server listening on port 8080");
-})
+// Self-ping mechanism to prevent Render from putting the app to sleep
+// Only run in production environment
+if (process.env.NODE_ENV === "production") {
+    const RENDER_EXTERNAL_URL = process.env.RENDER_EXTERNAL_URL || "https://apnarooms.onrender.com";
+    
+    setInterval(() => {
+        https.get(`${RENDER_EXTERNAL_URL}/ping`, (res) => {
+            console.log(`Self-ping performed. Status code: ${res.statusCode}`);
+        }).on('error', (err) => {
+            console.error('Self-ping error:', err.message);
+        });
+    }, 840000); // Ping every 14 minutes (840000 milliseconds)
+}

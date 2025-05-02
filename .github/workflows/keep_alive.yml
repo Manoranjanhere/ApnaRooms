@@ -1,0 +1,18 @@
+name: Keep Render App Alive
+
+on:
+  schedule:
+    # Run every 14 minutes (Render free tier instances sleep after 15 minutes of inactivity)
+    - cron: '*/14 * * * *'
+  # Allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Render App
+        # Replace apnarooms.onrender.com with your actual Render app URL without https://
+        run: |
+          curl -s "https://apnarooms.onrender.com/" > /dev/null
+          echo "Ping sent to Render app at $(date)"
